@@ -3,7 +3,7 @@
  * Plugin Name: DigiDownloads
  * Plugin URI: https://digidownloads.com
  * Description: Lightweight, performance-focused plugin for selling digital products without WooCommerce.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: DigiDownloads Team
  * Author URI: https://digidownloads.com
  * License: GPL-2.0+
