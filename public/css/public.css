@@ -1,0 +1,328 @@
+.digidownloads-product,
+.digidownloads-checkout {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 30px;
+	background: #fff;
+	border: 1px solid #e1e1e1;
+	border-radius: 8px;
+}
+
+.product-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+	border-bottom: 2px solid #f0f0f0;
+}
+
+.product-title {
+	margin: 0;
+	font-size: 28px;
+	color: #333;
+}
+
+.product-price {
+	font-size: 32px;
+	font-weight: 700;
+	color: #0073aa;
+}
+
+.product-description {
+	margin-bottom: 30px;
+	line-height: 1.6;
+	color: #555;
+}
+
+.product-actions {
+	text-align: center;
+}
+
+.digidownloads-button {
+	display: inline-block;
+	padding: 15px 40px;
+	background: #0073aa;
+	color: #fff !important;
+	text-decoration: none;
+	border: none;
+	border-radius: 4px;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.digidownloads-button:hover {
+	background: #005a87;
+}
+
+.checkout-product-info {
+	text-align: center;
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+	border-bottom: 2px solid #f0f0f0;
+}
+
+.checkout-product-info h2 {
+	margin: 0 0 10px 0;
+	font-size: 24px;
+}
+
+.checkout-price {
+	font-size: 36px;
+	font-weight: 700;
+	color: #0073aa;
+}
+
+.checkout-form {
+	margin-bottom: 30px;
+}
+
+.form-field {
+	margin-bottom: 20px;
+}
+
+.form-field label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 600;
+	color: #333;
+}
+
+.form-field input[type="email"],
+.form-field input[type="text"] {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 16px;
+}
+
+.field-description {
+	margin: 5px 0 0 0;
+	font-size: 13px;
+	color: #666;
+}
+
+#card-element {
+	padding: 12px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	background: #fff;
+}
+
+.payment-errors {
+	color: #dc3232;
+	margin: 15px 0;
+	font-size: 14px;
+}
+
+.payment-processing {
+	text-align: center;
+	padding: 20px;
+	color: #0073aa;
+	font-weight: 600;
+}
+
+.payment-result {
+	padding: 30px;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.payment-result.success {
+	background: #ecf7ed;
+	border: 1px solid #46b450;
+	color: #2e7d32;
+}
+
+.payment-result.error {
+	background: #fef7f7;
+	border: 1px solid #dc3232;
+	color: #a00;
+}
+
+.payment-result h3 {
+	margin-top: 0;
+}
+
+.required {
+	color: #dc3232;
+}
+
+button[type="submit"]:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* Products List Grid */
+.digidownloads-products-list {
+	display: grid;
+	gap: 30px;
+	margin: 30px 0;
+}
+
+.digidownloads-products-list[data-columns="1"] {
+	grid-template-columns: 1fr;
+}
+
+.digidownloads-products-list[data-columns="2"] {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.digidownloads-products-list[data-columns="3"] {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.digidownloads-products-list[data-columns="4"] {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 992px) {
+	.digidownloads-products-list[data-columns="3"],
+	.digidownloads-products-list[data-columns="4"] {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.digidownloads-products-list {
+		grid-template-columns: 1fr !important;
+	}
+}
+
+.digidownloads-product-item {
+	background: #fff;
+	border: 1px solid #e1e1e1;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+}
+
+.digidownloads-product-item:hover {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+}
+
+.product-item-inner {
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.product-item-title {
+	margin: 0 0 15px 0;
+	font-size: 22px;
+	color: #333;
+	font-weight: 600;
+}
+
+.product-item-description {
+	flex: 1;
+	margin-bottom: 20px;
+	line-height: 1.6;
+	color: #555;
+	font-size: 14px;
+}
+
+.product-item-description p:last-child {
+	margin-bottom: 0;
+}
+
+.product-item-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 20px;
+	border-top: 1px solid #f0f0f0;
+}
+
+.product-item-price {
+	font-size: 24px;
+	font-weight: 700;
+	color: #0073aa;
+}
+
+.product-item-button {
+	padding: 10px 25px;
+	font-size: 16px;
+	white-space: nowrap;
+}
+
+.digidownloads-no-products {
+	text-align: center;
+	padding: 40px 20px;
+	font-size: 16px;
+	color: #666;
+}
+
+/* Inline Checkout in Products List */
+.product-checkout-container {
+	background: #f9f9f9;
+	padding: 20px;
+	border-radius: 4px;
+}
+
+.product-checkout-container .form-field {
+	margin-bottom: 15px;
+}
+
+.product-checkout-container label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+	color: #333;
+}
+
+.product-checkout-container input[type="email"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+.product-checkout-container .field-description {
+	margin: 5px 0 0 0;
+	font-size: 12px;
+	color: #666;
+}
+
+.product-checkout-container .card-element-inline {
+	padding: 10px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+}
+
+.product-checkout-container .card-errors {
+	margin: 10px 0;
+}
+
+.product-checkout-container .submit-payment {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.product-checkout-container .payment-processing {
+	text-align: center;
+	margin-top: 10px;
+	color: #0073aa;
+	font-weight: 600;
+}
+
+.product-checkout-container .payment-success {
+	text-align: center;
+	padding: 20px;
+	background: #d4edda;
+	border: 1px solid #c3e6cb;
+	border-radius: 4px;
+	color: #155724;
+}
+
+.product-checkout-container .payment-success h3 {
+	margin: 0 0 10px 0;
+	color: #155724;
+}
