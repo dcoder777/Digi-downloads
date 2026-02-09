@@ -1,6 +1,6 @@
 # DigiDownloads
 
-A lightweight, performance-focused WordPress plugin for selling digital products without WooCommerce.
+Sell digital downloads on WordPress with secure checkout and instant file delivery.
 
 ## Features
 
