@@ -22,8 +22,6 @@ class PublicFacing {
 		add_action( 'wp_ajax_digidownloads_test', array( $this, 'test_ajax' ) );
 		add_action( 'wp_ajax_nopriv_digidownloads_test', array( $this, 'test_ajax' ) );
 		
-		// Debug: Log that class is loaded
-		error_log('DigiDownloads PublicFacing class loaded');
 	}
 
 	public function register_shortcodes() {
@@ -187,26 +185,19 @@ class PublicFacing {
 	}
 
 	public function create_checkout() {
-		// Enable error logging
-		error_log('=== DigiDownloads: create_checkout called ===');
-		error_log('POST: ' . json_encode($_POST));
-		
 		// Verify nonce
 		if ( ! isset( $_POST['nonce'] ) ) {
-			error_log('ERROR: nonce not in POST');
 			wp_send_json_error( array( 'message' => 'Nonce missing' ) );
 			return;
 		}
 
 		if ( ! wp_verify_nonce( $_POST['nonce'], 'digidownloads_checkout' ) ) {
-			error_log('ERROR: Nonce verification failed. Nonce: ' . $_POST['nonce']);
 			wp_send_json_error( array( 'message' => 'Nonce verification failed' ) );
 			return;
 		}
 
 		// Get POST data
 		if ( ! isset( $_POST['product_id'] ) || ! isset( $_POST['email'] ) ) {
-			error_log('ERROR: Missing product_id or email');
 			wp_send_json_error( array( 'message' => 'Missing required fields' ) );
 			return;
 		}
@@ -214,10 +205,7 @@ class PublicFacing {
 		$product_id = absint( $_POST['product_id'] );
 		$email = sanitize_email( $_POST['email'] );
 
-		error_log("Product ID: $product_id, Email: $email");
-
 		if ( ! $product_id || ! is_email( $email ) ) {
-			error_log('ERROR: Invalid product_id or email');
 			wp_send_json_error( array( 'message' => 'Invalid product or email' ) );
 			return;
 		}
@@ -226,6 +214,7 @@ class PublicFacing {
 
 		if ( ! $product || $product->status !== 'active' ) {
 			wp_send_json_error( array( 'message' => __( 'Product not available.', 'digidownloads' ) ) );
+			return;
 		}
 
 		// Check if payment gateway is configured
@@ -241,6 +230,7 @@ class PublicFacing {
 		}
 
 		// Create order
+		$selected_gateway = ! empty( $settings['payment_gateway'] ) ? $settings['payment_gateway'] : 'stripe';
 		$order_id = 'DD-' . strtoupper( wp_generate_password( 12, false ) );
 		$order_db_id = \DigiDownloads\Order::create( array(
 			'order_id' => $order_id,
@@ -248,7 +238,7 @@ class PublicFacing {
 			'buyer_email' => $email,
 			'amount' => $product->price,
 			'payment_status' => 'pending',
-			'payment_gateway' => 'stripe',
+			'payment_gateway' => $selected_gateway,
 		) );
 
 		if ( is_wp_error( $order_db_id ) ) {
@@ -258,7 +248,6 @@ class PublicFacing {
 		// Create Stripe payment intent
 		$settings = get_option( 'digidownloads_settings', array() );
 		
-		$selected_gateway = ! empty( $settings['payment_gateway'] ) ? $settings['payment_gateway'] : 'stripe';
 		$currency = ! empty( $settings['currency'] ) ? $settings['currency'] : 'USD';
 
 		if ( $selected_gateway === 'stripe' ) {
