@@ -1,6 +1,6 @@
 # DigiDownloads
 
-Sell digital downloads on WordPress with secure checkout and instant file delivery.
+Lightweight WordPress plugin for selling digital downloads
 
 ## Features
 
